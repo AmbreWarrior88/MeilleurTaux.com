@@ -1,1 +1,21 @@
+/* Landmark */
 
+.pink {
+  background-color: pink;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+/* Global */
+
+.container {
+  position: absolute;
+  width: 1231px;
+  height: 800px;
+}
