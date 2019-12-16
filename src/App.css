@@ -11,11 +11,26 @@
 .blue {
   background-color: blue;
 }
+.red {
+  background-color: red;
+}
 
 /* Global */
 
+@import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
+
+.ff {
+  font-family: "Oswald", sans-serif;
+}
+
 .container {
-  position: absolute;
-  width: 1231px;
-  height: 800px;
+  width: auto;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.ml-60 {
+  margin-left: 60px;
 }

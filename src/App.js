@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import Category from "./containers/Category";
-import State from "./containers/State";
-import Use from "./containers/Use";
-import Current from "./containers/Current";
-import Where from "./containers/Where";
-import Amount from "./containers/Amount";
-import Contact from "./containers/Contact";
-import Finished from "./containers/Finished";
+import Header from "./components/Header/index";
+import Category from "./containers/Category/index";
+import State from "./containers/State/index";
+import Use from "./containers/Use/index";
+import Current from "./containers/Current/index";
+import Where from "./containers/Where/index";
+import Amount from "./containers/Amount/index";
+import Contact from "./containers/Contact/index";
+import Finished from "./containers/Finished/index";
 
 const App = () => {
   return (
