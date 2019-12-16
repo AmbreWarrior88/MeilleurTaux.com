@@ -19,18 +19,114 @@
 
 @import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
 
-.ff {
-  font-family: "Oswald", sans-serif;
-}
-
 .container {
-  width: auto;
+  width: 1024px;
+  margin: 0 auto;
 }
 
 .mt-20 {
   margin-top: 20px;
 }
 
-.ml-60 {
-  margin-left: 60px;
+.bottom-element {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  color: #ff9e23;
+  font-size: 35px;
+}
+
+.info {
+  font-style: italic;
+  margin: 10px;
+  cursor: pointer;
+  border: 1px solid #b7b7b7;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.items {
+  display: flex;
+}
+button {
+  flex: 1;
+  cursor: pointer;
+  border: 1px solid #b7b7b7;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: uppercase;
+  height: 95px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 0 10px; */
+  position: relative;
+  box-shadow: 0 4px 0 #e4e4e4;
+  margin: 5px;
+  font-weight: bold;
+  outline: 0;
+}
+
+button:hover {
+  background-color: #ff9e23;
+  color: white;
+  outline: 0;
+}
+
+.next {
+  text-decoration: inherit;
+  height: 40px;
+  width: 150px;
+  background-color: #ff9e23;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.input-element {
+  display: flex;
+  align-items: center;
+}
+
+.grey {
+  background-color: #f1f1f1;
+}
+
+input {
+  height: 40px;
+  width: 320px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 24px;
+  border-radius: 4px;
+  transition: 1s;
+  box-shadow: 0 3px 0 #e4e4e4;
+  border: 1px solid #b7b7b7;
+  padding: 8px 15px;
+  outline: 0;
+}
+
+.input-item {
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
 }

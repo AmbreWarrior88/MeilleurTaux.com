@@ -2,9 +2,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
+    <footer>
       <p>*Champs obligatoire - Mentions légales</p>
-    </div>
+    </footer>
   );
 };
 
