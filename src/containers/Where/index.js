@@ -13,10 +13,11 @@ const Where = () => {
         <h1>OÙ SE SITUE LE BIEN À FINANCER?</h1>
 
         <div className="input-element grey">
-          <p>Dans quel pays se situe votre projet?*</p>
+          <p className="description">Dans quel pays se situe votre projet?*</p>
           <div className="input-item">
             <p className="info">i</p>
             <input
+              id="input"
               type="text"
               placeholder="FRANCE"
               onClick={() => {
@@ -27,10 +28,11 @@ const Where = () => {
         </div>
 
         <div className="input-element">
-          <p>Ville ou code postal*</p>
+          <p className="description">Ville ou code postal*</p>
           <div className="input-item">
             <p className="info">i</p>
             <input
+              id="input"
               type="text"
               placeholder="Ville ou code postal"
               onClick={() => {

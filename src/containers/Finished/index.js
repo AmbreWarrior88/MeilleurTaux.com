@@ -2,12 +2,18 @@ import React from "react";
 
 const Finished = () => {
   return (
-    <div>
-      <h1>ET VOILÀ, LE FORMULAIRE EST TERMINÉ !</h1>
-      <p>Votre numéro de dossier est le :</p>
-      <p>1234567 (numéro de dossier attribué)</p>
-      <p>Mentions légales</p>
-    </div>
+    <section>
+      <article className="container">
+        <h1>ET VOILÀ, LE FORMULAIRE EST TERMINÉ !</h1>
+        <div style={{ display: "flex" }}>
+          <p>Votre numéro de dossier est le :</p>
+          <p style={{ marginLeft: "10px", fontWeight: "bold" }}>
+            1234567 (numéro de dossier attribué)
+          </p>
+        </div>
+        <p>Mentions légales</p>
+      </article>
+    </section>
   );
 };
 

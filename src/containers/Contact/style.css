@@ -1,0 +1,43 @@
+.logo-confidential {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  margin-left: 340px;
+}
+
+.checkbox {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.orange-box {
+  background-color: #ff9e23;
+  color: white;
+  flex: 1;
+  font-size: 20px;
+  height: 180px;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.visual-desktop {
+  flex: 2;
+}
+
+.email-picture {
+  display: flex;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 30px;
+}

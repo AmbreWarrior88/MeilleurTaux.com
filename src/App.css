@@ -24,12 +24,20 @@
   margin: 0 auto;
 }
 
+.df {
+  display: flex;
+}
+
 .mt-20 {
   margin-top: 20px;
 }
 
+.ml-20 {
+  margin-left: 20px;
+}
+
 .bottom-element {
-  margin-top: 100px;
+  margin-top: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,6 +68,7 @@ h1 {
 .items {
   display: flex;
 }
+
 button {
   flex: 1;
   cursor: pointer;
@@ -111,7 +120,7 @@ button:hover {
   background-color: #f1f1f1;
 }
 
-input {
+#input {
   height: 40px;
   width: 320px;
   box-sizing: border-box;
@@ -125,8 +134,12 @@ input {
   outline: 0;
 }
 
+.description {
+  flex: 2;
+  margin-left: 20px;
+}
+
 .input-item {
   display: flex;
-  justify-content: center;
-  margin-left: 50px;
+  flex: 4;
 }
