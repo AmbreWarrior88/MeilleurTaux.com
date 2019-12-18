@@ -26,25 +26,25 @@ const App = () => {
           <Category isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/State">
-          <State />
+          <State isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/Use">
-          <Use />
+          <Use isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/Current">
-          <Current />
+          <Current isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/Where">
-          <Where />
+          <Where isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/Amount">
-          <Amount />
+          <Amount isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/Contact">
-          <Contact />
+          <Contact isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/Finished">
-          <Finished />
+          <Finished isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
       </Switch>
     </Router>

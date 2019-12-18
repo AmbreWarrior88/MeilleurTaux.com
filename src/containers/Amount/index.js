@@ -5,8 +5,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import { useHistory } from "react-router-dom";
 
 const Amount = () => {
-  // const now = 29;
-  const [now, setNow] = useState(26);
+  const [now, setNow] = useState(70);
   const history = useHistory();
 
   return (
@@ -23,7 +22,7 @@ const Amount = () => {
               type="number"
               placeholder="euros"
               onClick={() => {
-                setNow(27);
+                setNow(75);
               }}
             />
           </div>
@@ -38,7 +37,7 @@ const Amount = () => {
               type="number"
               placeholder="euros"
               onClick={() => {
-                setNow(28);
+                setNow(80);
               }}
             />
           </div>
@@ -53,7 +52,7 @@ const Amount = () => {
               type="number"
               placeholder="euros"
               onClick={() => {
-                setNow(29);
+                setNow(85);
               }}
             />
           </div>

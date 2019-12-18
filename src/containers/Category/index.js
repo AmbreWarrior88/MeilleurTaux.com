@@ -1,18 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../App.css";
 import Footer from "../../components/Footer/index";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const Category = props => {
-  // const now = 5;
+  // State of progress bar
   const [now, setNow] = useState(0);
-  const [home, setHome] = useState("Maison");
-  const [apartment, setApartment] = useState("Appartement");
 
+  const history = useHistory();
+
+  const home = "Maison";
+  const apartment = "Appartement";
+
+  // State that stores the user's choice
   const [category, setCategory] = useState("");
-  // let isSelected = false;
+  console.log(category);
+
+  let isEnabled = false;
+
+  if (category === home || category === apartment) {
+    isEnabled = true;
+  }
 
   return (
     <section>
@@ -30,7 +40,6 @@ const Category = props => {
           onSubmit={async event => {
             event.preventDefault();
             Cookie.set("Category", category);
-            console.log(Cookie);
           }}
         >
           <div className="items">
@@ -42,7 +51,7 @@ const Category = props => {
                 props.setIsSelected(home);
                 setCategory(event.target.value);
 
-                setNow(5);
+                setNow(15);
               }}
             >
               Maison
@@ -58,7 +67,7 @@ const Category = props => {
                 props.setIsSelected(apartment);
                 setCategory(event.target.value);
 
-                setNow(5);
+                setNow(15);
               }}
             >
               Appartement
@@ -68,11 +77,20 @@ const Category = props => {
           <div className="bottom-element">
             <p>Précédent</p>
             <ProgressBar now={now} label={`${now}%`} />
-            <Link to="/State">
-              <button className="next" type="submit">
-                Suivant
-              </button>
-            </Link>
+
+            <button
+              className={isEnabled ? "next" : "nextDisabled"}
+              type="submit"
+              onClick={() => {
+                if (isEnabled === true) {
+                  history.push("/State");
+                } else {
+                  alert("Choisissez une proposition.");
+                }
+              }}
+            >
+              Suivant
+            </button>
           </div>
         </form>
 

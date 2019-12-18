@@ -8,9 +8,8 @@ import "../Contact/style.css";
 import { useHistory } from "react-router-dom";
 
 const Contact = () => {
-  // const now = 96;
   const [offer, setOffer] = useState(false);
-  const [now, setNow] = useState(29);
+  const [now, setNow] = useState(85);
   const history = useHistory();
 
   return (
@@ -41,7 +40,7 @@ const Contact = () => {
               type="email"
               placeholder="Votre e-mail"
               onClick={() => {
-                setNow(96);
+                setNow(100);
               }}
             />
             <img

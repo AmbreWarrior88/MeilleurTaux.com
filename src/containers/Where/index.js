@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 const Where = () => {
   // const now = 26;
-  const [now, setNow] = useState(16);
+  const [now, setNow] = useState(60);
   const history = useHistory();
 
   return (
@@ -23,7 +23,7 @@ const Where = () => {
               type="text"
               placeholder="FRANCE"
               onClick={() => {
-                setNow(21);
+                setNow(65);
               }}
             />
           </div>
@@ -38,7 +38,7 @@ const Where = () => {
               type="text"
               placeholder="Ville ou code postal"
               onClick={() => {
-                setNow(26);
+                setNow(70);
               }}
             />
           </div>
