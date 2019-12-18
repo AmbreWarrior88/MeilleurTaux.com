@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/index";
@@ -12,12 +12,18 @@ import Contact from "./containers/Contact/index";
 import Finished from "./containers/Finished/index";
 
 const App = () => {
+  const [isSelected, setIsSelected] = useState();
+
+  // useEffect(() => {
+  //   fetchData(isSelected);
+  // }, [isSelected]);
+
   return (
     <Router>
       <Header />
       <Switch>
         <Route exact path="/">
-          <Category />
+          <Category isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
         <Route path="/State">
           <State />

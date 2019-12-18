@@ -5,11 +5,13 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import VisualDesktopEmail from "../../assets/visuel-desktop-email.jpg";
 import Confidential from "../../assets/Confidential.png";
 import "../Contact/style.css";
+import { useHistory } from "react-router-dom";
 
 const Contact = () => {
   // const now = 96;
   const [offer, setOffer] = useState(false);
   const [now, setNow] = useState(29);
+  const history = useHistory();
 
   return (
     <section>
@@ -64,7 +66,13 @@ const Contact = () => {
         </div>
 
         <div className="bottom-element">
-          <Link>Précédent</Link>
+          <Link
+            onClick={() => {
+              history.push("./Amount");
+            }}
+          >
+            Précédent
+          </Link>
           <ProgressBar now={now} label={`${now}%`} />
           <Link to="/Finished">
             <p className="next">Suivant</p>

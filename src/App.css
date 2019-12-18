@@ -69,7 +69,7 @@ h1 {
   display: flex;
 }
 
-button {
+.button-off {
   flex: 1;
   cursor: pointer;
   border: 1px solid #b7b7b7;
@@ -93,7 +93,31 @@ button {
   outline: 0;
 }
 
-button:hover {
+.button-on {
+  flex: 1;
+  cursor: pointer;
+  border: 1px solid #b7b7b7;
+  text-decoration: none;
+  color: white;
+  background-color: #ff9e23;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: uppercase;
+  height: 95px;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 0 10px; */
+  position: relative;
+  box-shadow: 0 4px 0 #e4e4e4;
+  margin: 5px;
+  font-weight: bold;
+  outline: 0;
+}
+
+.button-off:hover {
   background-color: #ff9e23;
   color: white;
   outline: 0;
@@ -109,6 +133,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   color: white;
+  font-size: 20px;
 }
 
 .input-element {

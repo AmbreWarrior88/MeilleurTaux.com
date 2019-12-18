@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/index";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { useHistory } from "react-router-dom";
 
 const Use = () => {
   // const now = 11;
   const [now, setNow] = useState(8);
+  const history = useHistory();
 
   return (
     <section>
@@ -38,7 +40,13 @@ const Use = () => {
           </button>
         </div>
         <div className="bottom-element">
-          <Link>Précédent</Link>
+          <Link
+            onClick={() => {
+              history.push("./State");
+            }}
+          >
+            Précédent
+          </Link>
           <ProgressBar now={now} label={`${now}%`} />
           <Link to="/Current">
             <p className="next">Suivant</p>
