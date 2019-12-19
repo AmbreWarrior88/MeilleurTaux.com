@@ -15,6 +15,16 @@
   background-color: red;
 }
 
+/*  RESET */
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* Global */
 
 @import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
@@ -162,7 +172,7 @@ h1 {
   background-color: #f1f1f1;
 }
 
-#input {
+.input {
   height: 40px;
   width: 320px;
   box-sizing: border-box;

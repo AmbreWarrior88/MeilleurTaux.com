@@ -59,22 +59,22 @@ const Contact = () => {
               setOffer(true);
             }}
           />
-          <label for="checkbox">
+          <p>
             J'accepte de recevoir par email des propositions de MeileurTaux.
-          </label>
+          </p>
         </div>
 
         <div className="bottom-element">
-          <Link
+          <li
             onClick={() => {
               history.push("./Amount");
             }}
           >
             Précédent
-          </Link>
+          </li>
           <ProgressBar now={now} label={`${now}%`} />
           <Link to="/Finished">
-            <p className="next">Suivant</p>
+            <button className="next">Suivant</button>
           </Link>
         </div>
         <Footer />

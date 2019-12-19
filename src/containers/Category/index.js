@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import "../../App.css";
 import Footer from "../../components/Footer/index";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
@@ -39,13 +38,19 @@ const Category = props => {
         <form
           onSubmit={async event => {
             event.preventDefault();
-            Cookie.set("Category", category);
+
+            if (isEnabled === true) {
+              Cookie.set("Category", category);
+              history.push("/State");
+            } else {
+              alert("Choisissez une proposition.");
+            }
           }}
         >
           <div className="items">
             <button
               className={props.isSelected === home ? "button-on" : "button-off"}
-              type="submit"
+              type="button"
               value={home}
               onClick={event => {
                 props.setIsSelected(home);
@@ -61,7 +66,7 @@ const Category = props => {
               className={
                 props.isSelected === apartment ? "button-on" : "button-off"
               }
-              type="submit"
+              type="button"
               value={apartment}
               onClick={event => {
                 props.setIsSelected(apartment);
@@ -81,13 +86,6 @@ const Category = props => {
             <button
               className={isEnabled ? "next" : "nextDisabled"}
               type="submit"
-              onClick={() => {
-                if (isEnabled === true) {
-                  history.push("/State");
-                } else {
-                  alert("Choisissez une proposition.");
-                }
-              }}
             >
               Suivant
             </button>

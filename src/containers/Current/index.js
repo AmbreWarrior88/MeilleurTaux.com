@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Footer from "../../components/Footer/index";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
@@ -14,6 +14,7 @@ const Current = props => {
   const freeHosted = "Hébergé à titre gratuit";
 
   const [current, setCurrent] = useState("");
+  console.log(current);
 
   let isEnabled = false;
 
@@ -41,7 +42,12 @@ const Current = props => {
         <form
           onSubmit={async event => {
             event.preventDefault();
-            Cookie.set("Current", current);
+            if (isEnabled === true) {
+              Cookie.set("Current", current);
+              history.push("/Where");
+            } else {
+              alert("Choisissez une proposition.");
+            }
           }}
         >
           <div className="items">
@@ -49,7 +55,7 @@ const Current = props => {
               className={
                 props.isSelected === tenant ? "button-on" : "button-off"
               }
-              type="submit"
+              type="button"
               value={tenant}
               onClick={event => {
                 props.setIsSelected(tenant);
@@ -64,7 +70,7 @@ const Current = props => {
               className={
                 props.isSelected === owner ? "button-on" : "button-off"
               }
-              type="submit"
+              type="button"
               value={owner}
               onClick={event => {
                 props.setIsSelected(owner);
@@ -79,7 +85,7 @@ const Current = props => {
               className={
                 props.isSelected === staffHouse ? "button-on" : "button-off"
               }
-              type="submit"
+              type="button"
               value={staffHouse}
               onClick={event => {
                 props.setIsSelected(staffHouse);
@@ -94,7 +100,7 @@ const Current = props => {
               className={
                 props.isSelected === freeHosted ? "button-on" : "button-off"
               }
-              type="submit"
+              type="button"
               value={freeHosted}
               onClick={event => {
                 props.setIsSelected(freeHosted);
@@ -107,26 +113,19 @@ const Current = props => {
           </div>
 
           <div className="bottom-element">
-            <Link
+            <li
               onClick={() => {
                 history.push("./Use");
               }}
             >
               Précédent
-            </Link>
+            </li>
 
             <ProgressBar now={now} label={`${now}%`} />
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}
               type="submit"
-              onClick={() => {
-                if (isEnabled === true) {
-                  history.push("/Where");
-                } else {
-                  alert("Choisissez une proposition.");
-                }
-              }}
             >
               Suivant
             </button>
