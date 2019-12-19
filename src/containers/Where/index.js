@@ -11,7 +11,7 @@ const Where = props => {
 
   // const { cities } = useParams();
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -63,7 +63,7 @@ const Where = props => {
               <p className="info">i</p>
 
               <input
-                className="input"
+                className={country ? "input-on" : "input"}
                 type="text"
                 placeholder="FRANCE"
                 value={country}
@@ -83,7 +83,7 @@ const Where = props => {
               <p className="info">i</p>
 
               <input
-                className="input"
+                className={city ? "input-on" : "input"}
                 type="text"
                 placeholder="Ville ou code postal"
                 value={city}

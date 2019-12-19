@@ -11,6 +11,8 @@ const Amount = props => {
   const [buy, setBuy] = useState("");
   const [work, setWork] = useState("");
 
+  const [notary, setNotary] = useState("");
+
   const [amount, setAmount] = useState("");
 
   let isEnabled = false;
@@ -18,6 +20,8 @@ const Amount = props => {
   if (buy !== "") {
     isEnabled = true;
   }
+
+  // (buy + work) * (7.38 / 100)
 
   return (
     <section>
@@ -44,7 +48,7 @@ const Amount = props => {
               <p className="info">i</p>
 
               <input
-                className="input"
+                className={buy ? "input-on" : "input"}
                 type="number"
                 placeholder="€"
                 value={buy}
@@ -62,7 +66,7 @@ const Amount = props => {
             <div className="input-item">
               <p className="info">i</p>
               <input
-                className="input"
+                className={work ? "input-on" : "input"}
                 type="number"
                 placeholder="€"
                 value={work}
@@ -80,10 +84,13 @@ const Amount = props => {
             <div className="input-item">
               <p className="info">i</p>
               <input
-                className="input"
+                className={notary ? "input-on" : "input"}
                 type="number"
                 placeholder="€"
-                onChange={() => {
+                disabled="disabled"
+                value={notary}
+                onChange={event => {
+                  setNotary(Number(event.target.value));
                   setNow(85);
                 }}
               />
@@ -96,11 +103,12 @@ const Amount = props => {
               <p className="info">i</p>
 
               <input
-                className="input"
+                className={amount ? "input-on" : "input"}
                 type="number"
                 placeholder="€"
-                value={buy + work}
-                onChange={event => {
+                disabled="disabled"
+                value={buy + work + notary}
+                onInput={event => {
                   setAmount(event.target.value);
                 }}
               />
