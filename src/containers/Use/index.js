@@ -13,7 +13,6 @@ const Use = props => {
   const rentalInvestment = "Investissement locatif";
 
   const [use, setUse] = useState("");
-  console.log(use);
 
   let isEnabled = false;
 
@@ -37,7 +36,7 @@ const Use = props => {
           onSubmit={async event => {
             event.preventDefault();
             if (isEnabled === true) {
-              Cookie.set("Use", use);
+              Cookie.set("Use", use, { expires: 7 });
               history.push("/Current");
             } else {
               alert("Choisissez une proposition.");

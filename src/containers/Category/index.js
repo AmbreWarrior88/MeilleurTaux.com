@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Footer from "../../components/Footer/index";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const Category = props => {
+  // const { isSelected } = props;
+  const { setIsSelected } = props;
+
   // State of progress bar
   const [now, setNow] = useState(0);
 
@@ -14,8 +16,7 @@ const Category = props => {
   const apartment = "Appartement";
 
   // State that stores the user's choice
-  const [category, setCategory] = useState("");
-  console.log(category);
+  const [category, setCategory] = useState([]);
 
   let isEnabled = false;
 
@@ -40,7 +41,8 @@ const Category = props => {
             event.preventDefault();
 
             if (isEnabled === true) {
-              Cookie.set("Category", category);
+              Cookie.set("Category", category, { expires: 7 });
+              // props.isSelected.push(category);
               history.push("/State");
             } else {
               alert("Choisissez une proposition.");
@@ -53,8 +55,8 @@ const Category = props => {
               type="button"
               value={home}
               onClick={event => {
-                props.setIsSelected(home);
                 setCategory(event.target.value);
+                setIsSelected(home);
 
                 setNow(15);
               }}
@@ -69,8 +71,8 @@ const Category = props => {
               type="button"
               value={apartment}
               onClick={event => {
-                props.setIsSelected(apartment);
                 setCategory(event.target.value);
+                setIsSelected(apartment);
 
                 setNow(15);
               }}
@@ -80,7 +82,7 @@ const Category = props => {
           </div>
 
           <div className="bottom-element">
-            <p>Précédent</p>
+            <p>*Champs obligatoire - Mentions légales</p>
             <ProgressBar now={now} label={`${now}%`} />
 
             <button
@@ -91,10 +93,6 @@ const Category = props => {
             </button>
           </div>
         </form>
-
-        {/* FOOTER */}
-
-        <Footer />
       </article>
     </section>
   );

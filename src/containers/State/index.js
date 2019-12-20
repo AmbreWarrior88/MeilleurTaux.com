@@ -13,7 +13,6 @@ const State = props => {
   const newState = "Neuf";
 
   const [state, setState] = useState("");
-  console.log(state);
 
   let isEnabled = false;
 
@@ -37,7 +36,7 @@ const State = props => {
           onSubmit={async event => {
             event.preventDefault();
             if (isEnabled === true) {
-              Cookie.set("State", state);
+              Cookie.set("State", state, { expires: 7 });
               history.push("/Use");
             } else {
               alert("Choisissez une proposition.");
@@ -52,8 +51,8 @@ const State = props => {
               type="button"
               value={oldState}
               onClick={event => {
-                props.setIsSelected(oldState);
                 setState(event.target.value);
+                props.setIsSelected(oldState);
                 setNow(30);
               }}
             >
@@ -67,8 +66,8 @@ const State = props => {
               type="button"
               value={newState}
               onClick={event => {
-                props.setIsSelected(newState);
                 setState(event.target.value);
+                props.setIsSelected(newState);
                 setNow(30);
               }}
             >

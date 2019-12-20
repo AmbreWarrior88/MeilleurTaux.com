@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import Cookie from "js-cookie";
+import { useHistory } from "react-router-dom";
 
-const Finished = () => {
+const Finished = props => {
+  const history = useHistory();
   const getRandom = max => {
     return Math.floor(Math.random() * Math.floor(max));
   };
+  const [file, setFile] = useState(getRandom(10000000));
+
+  Cookie.set("File", file, { expires: 7 });
+  props.setIsSelected(file);
 
   return (
     <section>
@@ -12,11 +19,16 @@ const Finished = () => {
 
         <div style={{ display: "flex" }}>
           <p>Votre numéro de dossier est le :</p>
-          <p style={{ marginLeft: "10px", fontWeight: "bold" }}>
-            {getRandom(10000000)}
-          </p>
+          <p style={{ marginLeft: "10px", fontWeight: "bold" }}>{file}</p>
         </div>
-        <p>Mentions légales</p>
+        <p style={{ textDecoration: "underline" }}>Mentions légales</p>
+        <li
+          onClick={() => {
+            history.push("/BackOffice");
+          }}
+        >
+          Back Office
+        </li>
       </article>
     </section>
   );

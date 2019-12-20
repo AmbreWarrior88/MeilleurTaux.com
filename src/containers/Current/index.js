@@ -14,7 +14,6 @@ const Current = props => {
   const freeHosted = "Hébergé à titre gratuit";
 
   const [current, setCurrent] = useState("");
-  console.log(current);
 
   let isEnabled = false;
 
@@ -43,7 +42,7 @@ const Current = props => {
           onSubmit={async event => {
             event.preventDefault();
             if (isEnabled === true) {
-              Cookie.set("Current", current);
+              Cookie.set("Current", current, { expires: 7 });
               history.push("/Where");
             } else {
               alert("Choisissez une proposition.");

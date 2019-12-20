@@ -10,9 +10,12 @@ import Where from "./containers/Where/index";
 import Amount from "./containers/Amount/index";
 import Contact from "./containers/Contact/index";
 import Finished from "./containers/Finished/index";
+import BackOffice from "./containers/BackOffice/index";
 
 const App = () => {
-  const [isSelected, setIsSelected] = useState();
+  const [isSelected, setIsSelected] = useState([]);
+
+  console.log("App =>", isSelected);
 
   // useEffect(() => {
   //   fetchData(isSelected);
@@ -45,6 +48,9 @@ const App = () => {
         </Route>
         <Route path="/Finished">
           <Finished isSelected={isSelected} setIsSelected={setIsSelected} />
+        </Route>
+        <Route path="/BackOffice">
+          <BackOffice isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
       </Switch>
     </Router>

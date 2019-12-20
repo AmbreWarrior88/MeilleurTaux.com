@@ -33,7 +33,8 @@ const Amount = props => {
           onSubmit={async event => {
             event.preventDefault();
             if (isEnabled === true) {
-              // Cookie.set("Amount", amount);
+              Cookie.set("Amount", amount, { expires: 7 });
+              props.setIsSelected(amount);
               history.push("/Contact");
             } else {
               alert("Remplissez les champs obligatoire.");

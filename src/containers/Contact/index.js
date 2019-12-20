@@ -5,8 +5,9 @@ import VisualDesktopEmail from "../../assets/visuel-desktop-email.jpg";
 import Confidential from "../../assets/Confidential.png";
 import "../Contact/style.css";
 import { useHistory } from "react-router-dom";
+import Cookie from "js-cookie";
 
-const Contact = () => {
+const Contact = props => {
   const [now, setNow] = useState(85);
 
   const history = useHistory();
@@ -48,6 +49,8 @@ const Contact = () => {
           onSubmit={async event => {
             event.preventDefault();
             if (isEnabled === true) {
+              Cookie.set("Email", email, { expires: 7 });
+              props.setIsSelected(email);
               history.push("/Finished");
             } else {
               alert("Remplissez l'email et acceptez la proposition.");
@@ -66,6 +69,7 @@ const Contact = () => {
                 value={email}
                 onChange={event => {
                   setEmail(event.target.value);
+
                   setNow(100);
                 }}
               />

@@ -16,8 +16,6 @@ const Where = props => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
 
-  const [where, setWhere] = useState("");
-
   let isEnabled = false;
 
   if (country !== "" && city !== "") {
@@ -69,7 +67,7 @@ const Where = props => {
                 value={country}
                 onChange={async event => {
                   await setCountry(event.target.value);
-                  Cookie.set("Country", country);
+                  Cookie.set("Country", country, { expires: 7 });
                   props.setIsSelected(country);
                   setNow(65);
                 }}
@@ -89,7 +87,7 @@ const Where = props => {
                 value={city}
                 onChange={async event => {
                   await setCity(event.target.value);
-                  Cookie.set("City", city);
+                  Cookie.set("City", city, { expires: 7 });
                   props.setIsSelected(city);
                   setNow(70);
                 }}
