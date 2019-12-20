@@ -20,9 +20,7 @@ const Amount = props => {
   if (buy !== "") {
     isEnabled = true;
   }
-
-  // (buy + work) * (7.38 / 100)
-
+  const cookie = Cookie.get("State");
   return (
     <section>
       <article className="container">
@@ -83,14 +81,20 @@ const Amount = props => {
             <p className="description">Frais de notaire*</p>
             <div className="input-item">
               <p className="info">i</p>
+
               <input
                 className={notary ? "input-on" : "input"}
                 type="number"
-                placeholder="€"
-                disabled="disabled"
+                placeholder="Tapez 0 pour avoir le calcul"
+                // disabled="disabled"
                 value={notary}
                 onChange={event => {
-                  setNotary(Number(event.target.value));
+                  setNotary(
+                    (event.target.value =
+                      (buy + work) *
+                      (cookie === "Neuf" ? 1.8 / 100 : 7.38 / 100))
+                  );
+
                   setNow(85);
                 }}
               />
@@ -105,11 +109,11 @@ const Amount = props => {
               <input
                 className={amount ? "input-on" : "input"}
                 type="number"
-                placeholder="€"
-                disabled="disabled"
-                value={buy + work + notary}
-                onInput={event => {
-                  setAmount(event.target.value);
+                placeholder="Tapez 0 pour avoir le calcul"
+                // disabled="disabled"
+                value={amount}
+                onChange={event => {
+                  setAmount((event.target.value = buy + work + notary));
                 }}
               />
             </div>
