@@ -5,6 +5,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const State = props => {
+  const { isSelected } = props;
+  const { setIsSelected } = props;
+  const newIsSelected = [...isSelected];
+
   const [now, setNow] = useState(15);
 
   const history = useHistory();
@@ -38,6 +42,8 @@ const State = props => {
             if (isEnabled === true) {
               Cookie.set("State", state, { expires: 7 });
               history.push("/Use");
+              newIsSelected.push(state);
+              setIsSelected(newIsSelected);
             } else {
               alert("Choisissez une proposition.");
             }
@@ -45,14 +51,12 @@ const State = props => {
         >
           <div className="items">
             <button
-              className={
-                props.isSelected === oldState ? "button-on" : "button-off"
-              }
+              className={state === oldState ? "button-on" : "button-off"}
               type="button"
               value={oldState}
               onClick={event => {
                 setState(event.target.value);
-                props.setIsSelected(oldState);
+
                 setNow(30);
               }}
             >
@@ -60,14 +64,12 @@ const State = props => {
             </button>
 
             <button
-              className={
-                props.isSelected === newState ? "button-on" : "button-off"
-              }
+              className={state === newState ? "button-on" : "button-off"}
               type="button"
               value={newState}
               onClick={event => {
                 setState(event.target.value);
-                props.setIsSelected(newState);
+
                 setNow(30);
               }}
             >

@@ -5,6 +5,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const Amount = props => {
+  const { isSelected } = props;
+  const { setIsSelected } = props;
+  const newIsSelected = [...isSelected];
+
   const [now, setNow] = useState(70);
   const history = useHistory();
 
@@ -34,7 +38,9 @@ const Amount = props => {
             event.preventDefault();
             if (isEnabled === true) {
               Cookie.set("Amount", amount, { expires: 7 });
-              props.setIsSelected(amount);
+              newIsSelected.push(amount);
+              setIsSelected(newIsSelected);
+
               history.push("/Contact");
             } else {
               alert("Remplissez les champs obligatoire.");

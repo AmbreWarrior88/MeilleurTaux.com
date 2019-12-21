@@ -8,6 +8,10 @@ import { useHistory } from "react-router-dom";
 import Cookie from "js-cookie";
 
 const Contact = props => {
+  const { isSelected } = props;
+  const { setIsSelected } = props;
+  const newIsSelected = [...isSelected];
+
   const [now, setNow] = useState(85);
 
   const history = useHistory();
@@ -50,7 +54,8 @@ const Contact = props => {
             event.preventDefault();
             if (isEnabled === true) {
               Cookie.set("Email", email, { expires: 7 });
-              props.setIsSelected(email);
+              newIsSelected.push(email);
+              setIsSelected(newIsSelected);
               history.push("/Finished");
             } else {
               alert("Remplissez l'email et acceptez la proposition.");

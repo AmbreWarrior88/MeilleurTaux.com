@@ -4,9 +4,9 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const Category = props => {
-  // const { isSelected } = props;
+  const { isSelected } = props;
   const { setIsSelected } = props;
-
+  const newIsSelected = [...isSelected];
   // State of progress bar
   const [now, setNow] = useState(0);
 
@@ -16,7 +16,7 @@ const Category = props => {
   const apartment = "Appartement";
 
   // State that stores the user's choice
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState("");
 
   let isEnabled = false;
 
@@ -42,7 +42,8 @@ const Category = props => {
 
             if (isEnabled === true) {
               Cookie.set("Category", category, { expires: 7 });
-              // props.isSelected.push(category);
+              newIsSelected.push(category);
+              setIsSelected(newIsSelected);
               history.push("/State");
             } else {
               alert("Choisissez une proposition.");
@@ -51,12 +52,11 @@ const Category = props => {
         >
           <div className="items">
             <button
-              className={props.isSelected === home ? "button-on" : "button-off"}
+              className={category === home ? "button-on" : "button-off"}
               type="button"
               value={home}
               onClick={event => {
                 setCategory(event.target.value);
-                setIsSelected(home);
 
                 setNow(15);
               }}
@@ -65,14 +65,11 @@ const Category = props => {
             </button>
 
             <button
-              className={
-                props.isSelected === apartment ? "button-on" : "button-off"
-              }
+              className={category === apartment ? "button-on" : "button-off"}
               type="button"
               value={apartment}
               onClick={event => {
                 setCategory(event.target.value);
-                setIsSelected(apartment);
 
                 setNow(15);
               }}

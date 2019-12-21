@@ -5,6 +5,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const Current = props => {
+  const { isSelected } = props;
+  const { setIsSelected } = props;
+  const newIsSelected = [...isSelected];
+
   const [now, setNow] = useState(45);
   const history = useHistory();
 
@@ -43,6 +47,9 @@ const Current = props => {
             event.preventDefault();
             if (isEnabled === true) {
               Cookie.set("Current", current, { expires: 7 });
+              newIsSelected.push(current);
+              setIsSelected(newIsSelected);
+
               history.push("/Where");
             } else {
               alert("Choisissez une proposition.");
@@ -51,13 +58,10 @@ const Current = props => {
         >
           <div className="items">
             <button
-              className={
-                props.isSelected === tenant ? "button-on" : "button-off"
-              }
+              className={current === tenant ? "button-on" : "button-off"}
               type="button"
               value={tenant}
               onClick={event => {
-                props.setIsSelected(tenant);
                 setCurrent(event.target.value);
                 setNow(60);
               }}
@@ -66,13 +70,10 @@ const Current = props => {
             </button>
 
             <button
-              className={
-                props.isSelected === owner ? "button-on" : "button-off"
-              }
+              className={current === owner ? "button-on" : "button-off"}
               type="button"
               value={owner}
               onClick={event => {
-                props.setIsSelected(owner);
                 setCurrent(event.target.value);
                 setNow(60);
               }}
@@ -81,13 +82,10 @@ const Current = props => {
             </button>
 
             <button
-              className={
-                props.isSelected === staffHouse ? "button-on" : "button-off"
-              }
+              className={current === staffHouse ? "button-on" : "button-off"}
               type="button"
               value={staffHouse}
               onClick={event => {
-                props.setIsSelected(staffHouse);
                 setCurrent(event.target.value);
                 setNow(60);
               }}
@@ -96,13 +94,10 @@ const Current = props => {
             </button>
 
             <button
-              className={
-                props.isSelected === freeHosted ? "button-on" : "button-off"
-              }
+              className={current === freeHosted ? "button-on" : "button-off"}
               type="button"
               value={freeHosted}
               onClick={event => {
-                props.setIsSelected(freeHosted);
                 setCurrent(event.target.value);
                 setNow(60);
               }}

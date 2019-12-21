@@ -15,11 +15,7 @@ import BackOffice from "./containers/BackOffice/index";
 const App = () => {
   const [isSelected, setIsSelected] = useState([]);
 
-  console.log("App =>", isSelected);
-
-  // useEffect(() => {
-  //   fetchData(isSelected);
-  // }, [isSelected]);
+  console.log("App isSelected=>", isSelected);
 
   return (
     <Router>

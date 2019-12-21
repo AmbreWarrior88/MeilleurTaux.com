@@ -5,6 +5,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const Use = props => {
+  const { isSelected } = props;
+  const { setIsSelected } = props;
+  const newIsSelected = [...isSelected];
+
   const [now, setNow] = useState(30);
   const history = useHistory();
 
@@ -37,6 +41,8 @@ const Use = props => {
             event.preventDefault();
             if (isEnabled === true) {
               Cookie.set("Use", use, { expires: 7 });
+              newIsSelected.push(use);
+              setIsSelected(newIsSelected);
               history.push("/Current");
             } else {
               alert("Choisissez une proposition.");
@@ -45,14 +51,12 @@ const Use = props => {
         >
           <div className="items">
             <button
-              className={
-                props.isSelected === firstHome ? "button-on" : "button-off"
-              }
+              className={use === firstHome ? "button-on" : "button-off"}
               type="button"
               value={firstHome}
               onClick={event => {
-                props.setIsSelected(firstHome);
                 setUse(event.target.value);
+
                 setNow(45);
               }}
             >
@@ -60,13 +64,10 @@ const Use = props => {
             </button>
 
             <button
-              className={
-                props.isSelected === secondHome ? "button-on" : "button-off"
-              }
+              className={use === secondHome ? "button-on" : "button-off"}
               type="button"
               value={secondHome}
               onClick={event => {
-                props.setIsSelected(secondHome);
                 setUse(event.target.value);
                 setNow(45);
               }}
@@ -75,15 +76,10 @@ const Use = props => {
             </button>
 
             <button
-              className={
-                props.isSelected === rentalInvestment
-                  ? "button-on"
-                  : "button-off"
-              }
+              className={use === rentalInvestment ? "button-on" : "button-off"}
               type="button"
               value={rentalInvestment}
               onClick={event => {
-                props.setIsSelected(rentalInvestment);
                 setUse(event.target.value);
                 setNow(45);
               }}

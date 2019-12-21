@@ -6,6 +6,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
 
 const Where = props => {
+  const { isSelected } = props;
+  const { setIsSelected } = props;
+  const newIsSelected = [...isSelected];
+
   const [now, setNow] = useState(60);
   const history = useHistory();
 
@@ -47,6 +51,9 @@ const Where = props => {
           onSubmit={async event => {
             event.preventDefault();
             if (isEnabled === true) {
+              newIsSelected.push(country);
+              newIsSelected.push(city);
+              setIsSelected(newIsSelected);
               history.push("/Amount");
             } else {
               alert("Remplissez les champs.");
@@ -61,14 +68,14 @@ const Where = props => {
               <p className="info">i</p>
 
               <input
-                className={country ? "input-on" : "input"}
+                className={country !== "" ? "input-on" : "input"}
                 type="text"
                 placeholder="FRANCE"
                 value={country}
                 onChange={async event => {
                   await setCountry(event.target.value);
                   Cookie.set("Country", country, { expires: 7 });
-                  props.setIsSelected(country);
+
                   setNow(65);
                 }}
               />
@@ -81,14 +88,14 @@ const Where = props => {
               <p className="info">i</p>
 
               <input
-                className={city ? "input-on" : "input"}
+                className={city !== "" ? "input-on" : "input"}
                 type="text"
                 placeholder="Ville ou code postal"
                 value={city}
                 onChange={async event => {
                   await setCity(event.target.value);
                   Cookie.set("City", city, { expires: 7 });
-                  props.setIsSelected(city);
+
                   setNow(70);
                 }}
               />
