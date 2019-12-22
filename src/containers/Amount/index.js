@@ -29,6 +29,7 @@ const Amount = props => {
     isEnabled = true;
   }
   const cookie = Cookie.get("State");
+
   return (
     <section>
       <article className="container">
