@@ -9,7 +9,9 @@ const Amount = props => {
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
 
+  // State of progress bar
   const [now, setNow] = useState(70);
+
   const history = useHistory();
 
   const [buy, setBuy] = useState("");
@@ -17,8 +19,10 @@ const Amount = props => {
 
   const [notary, setNotary] = useState("");
 
+  // State that stores the user's choice
   const [amount, setAmount] = useState("");
 
+  // Constant which will validate the form
   let isEnabled = false;
 
   if (buy !== "") {
@@ -28,7 +32,7 @@ const Amount = props => {
   return (
     <section>
       <article className="container">
-        {/* TITLE */}
+        {/* HEADER*/}
 
         <h1>DÉFINISSONS LE MONTANT DE VOTRE PROJET</h1>
 
@@ -47,15 +51,18 @@ const Amount = props => {
             }
           }}
         >
+          {/* Input Buy */}
+
           <div className="input-element grey">
             <p className="description">Montant estimé de votre acquisition*</p>
             <div className="input-item">
               <p className="info">i</p>
 
               <input
+                style={{ textAlign: "right" }}
                 className={buy ? "input-on" : "input"}
                 type="number"
-                placeholder="€"
+                placeholder="Tapez un nombre"
                 value={buy}
                 onChange={event => {
                   setBuy(Number(event.target.value));
@@ -63,17 +70,21 @@ const Amount = props => {
                   setNow(75);
                 }}
               />
+              <span className="euro">€</span>
             </div>
           </div>
+
+          {/* Input Work */}
 
           <div className="input-element">
             <p className="description">Montant estimé des travaux</p>
             <div className="input-item">
               <p className="info">i</p>
               <input
+                style={{ textAlign: "right" }}
                 className={work ? "input-on" : "input"}
                 type="number"
-                placeholder="€"
+                placeholder="Tapez un nombre"
                 value={work}
                 onChange={async event => {
                   await setWork(Number(event.target.value));
@@ -81,8 +92,11 @@ const Amount = props => {
                   setNow(80);
                 }}
               />
+              <span className="euro">€</span>
             </div>
           </div>
+
+          {/* Input Notary */}
 
           <div className="input-element grey">
             <p className="description">Frais de notaire*</p>
@@ -90,6 +104,7 @@ const Amount = props => {
               <p className="info">i</p>
 
               <input
+                style={{ textAlign: "right" }}
                 className={notary ? "input-on" : "input"}
                 type="number"
                 placeholder="Tapez 0 pour avoir le calcul"
@@ -97,16 +112,21 @@ const Amount = props => {
                 value={notary}
                 onChange={event => {
                   setNotary(
-                    (event.target.value =
-                      (buy + work) *
-                      (cookie === "Neuf" ? 1.8 / 100 : 7.38 / 100))
+                    Math.round(
+                      (event.target.value =
+                        (buy + work) *
+                        (cookie === "Neuf" ? 1.8 / 100 : 7.38 / 100))
+                    )
                   );
 
                   setNow(85);
                 }}
               />
+              <span className="euro">€</span>
             </div>
           </div>
+
+          {/* Input Amount */}
 
           <div className="input-element">
             <p className="description">Budget total estimé du projet*</p>
@@ -114,6 +134,7 @@ const Amount = props => {
               <p className="info">i</p>
 
               <input
+                style={{ textAlign: "right" }}
                 className={amount ? "input-on" : "input"}
                 type="number"
                 placeholder="Tapez 0 pour avoir le calcul"
@@ -123,8 +144,11 @@ const Amount = props => {
                   setAmount((event.target.value = buy + work + notary));
                 }}
               />
+              <span className="euro">€</span>
             </div>
           </div>
+
+          {/* FOOTER */}
 
           <div className="bottom-element">
             <li
@@ -134,7 +158,25 @@ const Amount = props => {
             >
               Précédent
             </li>
-            <ProgressBar now={now} label={`${now}%`} />
+
+            {/* Progress Bar */}
+
+            <div className="df number-bar">
+              <div className="bar" />
+              <div style={{ position: "absolute" }}>
+                <ProgressBar
+                  style={
+                    now === 70
+                      ? { marginLeft: "350px" }
+                      : { marginLeft: "425px" }
+                  }
+                  now={now}
+                  label={`${now}%`}
+                />
+              </div>
+            </div>
+
+            {/* Button validated from */}
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}
@@ -144,8 +186,6 @@ const Amount = props => {
             </button>
           </div>
         </form>
-
-        {/* FOOTER */}
 
         <Footer />
       </article>

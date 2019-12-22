@@ -9,15 +9,19 @@ const Use = props => {
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
 
+  // State of progress bar
   const [now, setNow] = useState(30);
+
   const history = useHistory();
 
   const firstHome = "Résidence principale";
   const secondHome = "Résidence secondaire";
   const rentalInvestment = "Investissement locatif";
 
+  // State that stores the user's choice
   const [use, setUse] = useState("");
 
+  // Constant which will validate the form
   let isEnabled = false;
 
   if (use === firstHome || use === secondHome || use === rentalInvestment) {
@@ -50,6 +54,8 @@ const Use = props => {
           }}
         >
           <div className="items">
+            {/* Button First Home */}
+
             <button
               className={use === firstHome ? "button-on" : "button-off"}
               type="button"
@@ -63,6 +69,8 @@ const Use = props => {
               Résidence principale
             </button>
 
+            {/* Button Second Home */}
+
             <button
               className={use === secondHome ? "button-on" : "button-off"}
               type="button"
@@ -74,6 +82,8 @@ const Use = props => {
             >
               Résidence secondaire
             </button>
+
+            {/* Button Rental Investissement */}
 
             <button
               className={use === rentalInvestment ? "button-on" : "button-off"}
@@ -88,6 +98,8 @@ const Use = props => {
             </button>
           </div>
 
+          {/* FOOTER */}
+
           <div className="bottom-element">
             <li
               onClick={() => {
@@ -97,7 +109,24 @@ const Use = props => {
               Précédent
             </li>
 
-            <ProgressBar now={now} label={`${now}%`} />
+            {/* Progress Bar */}
+
+            <div className="df number-bar">
+              <div className="bar" />
+              <div style={{ position: "absolute" }}>
+                <ProgressBar
+                  style={
+                    now === 30
+                      ? { marginLeft: "150px" }
+                      : { marginLeft: "225px" }
+                  }
+                  now={now}
+                  label={`${now}%`}
+                />
+              </div>
+            </div>
+
+            {/* Button validated from */}
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}
@@ -107,8 +136,6 @@ const Use = props => {
             </button>
           </div>
         </form>
-
-        {/* FOOTER */}
 
         <Footer />
       </article>

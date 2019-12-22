@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Cookie from "js-cookie";
+import { useHistory } from "react-router-dom";
 
 const BackOffice = () => {
+  const history = useHistory();
+
+  // Collect all Cookies
   const Category = Cookie.get("Category");
   const State = Cookie.get("State");
   const Use = Cookie.get("Use");
@@ -12,6 +16,7 @@ const BackOffice = () => {
   const Email = Cookie.get("Email");
   const File = Cookie.get("File");
 
+  // State for remove Cookies
   const [remove, setRemove] = useState(false);
 
   if (remove === true) {
@@ -29,12 +34,20 @@ const BackOffice = () => {
   return (
     <section>
       <article className="container">
+        {/* HEADER */}
+
         <p style={{ display: "flex", justifyContent: "center" }}>
           Récapitulatif
         </p>
+
+        {/* Array with all information */}
+
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <div>
             <p>Supprimer</p>
+
+            {/* Input for remove all Cookies */}
+
             <input
               type="checkbox"
               checked={remove}
@@ -81,6 +94,17 @@ const BackOffice = () => {
             <p> {Email} </p>
           </div>
         </div>
+
+        {/* FOOTER */}
+
+        <li
+          style={{ marginTop: "50px" }}
+          onClick={() => {
+            history.push("./");
+          }}
+        >
+          Retour au formulaire
+        </li>
       </article>
     </section>
   );

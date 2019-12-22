@@ -9,6 +9,7 @@ const State = props => {
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
 
+  // State of progress bar
   const [now, setNow] = useState(15);
 
   const history = useHistory();
@@ -16,8 +17,10 @@ const State = props => {
   const oldState = "Ancien";
   const newState = "Neuf";
 
+  // State that stores the user's choice
   const [state, setState] = useState("");
 
+  // Constant which will validate the form
   let isEnabled = false;
 
   if (state === oldState || state === newState) {
@@ -50,6 +53,8 @@ const State = props => {
           }}
         >
           <div className="items">
+            {/* Button Old state */}
+
             <button
               className={state === oldState ? "button-on" : "button-off"}
               type="button"
@@ -62,6 +67,8 @@ const State = props => {
             >
               Ancien
             </button>
+
+            {/* button New state */}
 
             <button
               className={state === newState ? "button-on" : "button-off"}
@@ -77,6 +84,8 @@ const State = props => {
             </button>
           </div>
 
+          {/* FOOTER */}
+
           <div className="bottom-element">
             <li
               onClick={() => {
@@ -86,7 +95,24 @@ const State = props => {
               Précédent
             </li>
 
-            <ProgressBar now={now} label={`${now}%`} />
+            {/* Progress Bar */}
+
+            <div className="df number-bar">
+              <div className="bar" />
+              <div style={{ position: "absolute" }}>
+                <ProgressBar
+                  style={
+                    now === 15
+                      ? { marginLeft: "75px" }
+                      : { marginLeft: "150px" }
+                  }
+                  now={now}
+                  label={`${now}%`}
+                />
+              </div>
+            </div>
+
+            {/* Button validated from */}
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}
@@ -96,8 +122,6 @@ const State = props => {
             </button>
           </div>
         </form>
-
-        {/* FOOTER */}
 
         <Footer />
       </article>

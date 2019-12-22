@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Cookie from "js-cookie";
+import Footer from "../../components/Footer";
 
 const Category = props => {
   const { isSelected } = props;
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
+
   // State of progress bar
   const [now, setNow] = useState(0);
 
@@ -18,6 +20,7 @@ const Category = props => {
   // State that stores the user's choice
   const [category, setCategory] = useState("");
 
+  // Constant which will validate the form
   let isEnabled = false;
 
   if (category === home || category === apartment) {
@@ -51,6 +54,8 @@ const Category = props => {
           }}
         >
           <div className="items">
+            {/* Button HOME */}
+
             <button
               className={category === home ? "button-on" : "button-off"}
               type="button"
@@ -63,6 +68,8 @@ const Category = props => {
             >
               Maison
             </button>
+
+            {/* Button APARTMENT */}
 
             <button
               className={category === apartment ? "button-on" : "button-off"}
@@ -78,9 +85,25 @@ const Category = props => {
             </button>
           </div>
 
+          {/* FOOTER */}
+
           <div className="bottom-element">
-            <p>*Champs obligatoire - Mentions légales</p>
-            <ProgressBar now={now} label={`${now}%`} />
+            <Footer />
+
+            {/* Progress Bar */}
+
+            <div className="df number-bar">
+              <div className="bar" />
+              <div style={{ position: "absolute" }}>
+                <ProgressBar
+                  style={now === 15 ? { marginLeft: "75px" } : null}
+                  now={now}
+                  label={`${now}%`}
+                />
+              </div>
+            </div>
+
+            {/* Button validated from */}
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}

@@ -8,16 +8,21 @@ const Finished = props => {
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
 
+  const [password, setPassword] = useState("");
+
   const history = useHistory();
 
+  // Generate a random number
   const getRandom = max => {
     return Math.floor(Math.random() * Math.floor(max));
   };
 
+  // State for random number
   const [file, setFile] = useState(getRandom(10000000));
 
   Cookie.set("File", file, { expires: 7 });
 
+  // Send state "isSelected" in DB
   useEffect(() => {
     newIsSelected.push(file);
     setIsSelected(newIsSelected);
@@ -25,7 +30,11 @@ const Finished = props => {
       const response = await axios.post("http://localhost:4000/add-quote", {
         isSelected: isSelected
       });
+      console.log("response.data =>", response.data);
+
       setIsSelected(response.data);
+
+      // Cookie.set("token", response.data.token); => undefined
     };
     fetchData();
   }, []);
@@ -33,22 +42,44 @@ const Finished = props => {
   return (
     <section>
       <article className="container">
+        {/* HEADER */}
+
         <h1>ET VOILÀ, LE FORMULAIRE EST TERMINÉ !</h1>
+
+        {/* File number */}
 
         <div style={{ display: "flex" }}>
           <p>Votre numéro de dossier est le :</p>
           <p style={{ marginLeft: "10px", fontWeight: "bold" }}>{file}</p>
         </div>
 
-        <p style={{ textDecoration: "underline" }}>Mentions légales</p>
+        <p className="td-u">Mentions légales</p>
 
-        <li
-          onClick={() => {
-            history.push("/BackOffice");
+        {/* Access to BackOffice */}
+
+        <form
+          onSubmit={event => {
+            event.preventDefault();
+            if (password === "tothemoon") {
+              history.push("/BackOffice");
+            } else {
+              return alert("Mauvais mot de passe");
+            }
           }}
         >
-          Back Office
-        </li>
+          <p style={{ marginTop: "100px" }}>Accès Back Office</p>
+          <div className="df">
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={event => {
+                setPassword(event.target.value);
+              }}
+            />
+            <input type="submit" value={"Valider"} />
+          </div>
+        </form>
       </article>
     </section>
   );

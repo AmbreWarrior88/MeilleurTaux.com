@@ -11,8 +11,10 @@ import Amount from "./containers/Amount/index";
 import Contact from "./containers/Contact/index";
 import Finished from "./containers/Finished/index";
 import BackOffice from "./containers/BackOffice/index";
+import Test from "./containers/test";
 
 const App = () => {
+  // State which recovers all the data entered
   const [isSelected, setIsSelected] = useState([]);
 
   console.log("App isSelected=>", isSelected);
@@ -47,6 +49,11 @@ const App = () => {
         </Route>
         <Route path="/BackOffice">
           <BackOffice isSelected={isSelected} setIsSelected={setIsSelected} />
+        </Route>
+
+        {/* Route for testing code, only accessible by url*/}
+        <Route path="/Test">
+          <Test isSelected={isSelected} setIsSelected={setIsSelected} />
         </Route>
       </Switch>
     </Router>

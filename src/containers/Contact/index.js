@@ -12,13 +12,17 @@ const Contact = props => {
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
 
+  // State of progress bar
   const [now, setNow] = useState(85);
 
   const history = useHistory();
 
   const [agree, setAgree] = useState(false);
+
+  // State that stores the user's choice
   const [email, setEmail] = useState("");
 
+  // Constant which will validate the form
   let isEnabled = false;
 
   if (email !== "" && agree === true) {
@@ -28,7 +32,7 @@ const Contact = props => {
   return (
     <section>
       <article className="container">
-        {/* TITLE */}
+        {/* HEADER */}
 
         <h1>COORDONNÉES</h1>
 
@@ -62,6 +66,8 @@ const Contact = props => {
             }
           }}
         >
+          {/* Input Email */}
+
           <div className="input-element grey">
             <p className="description">Adresse e-mail emprunteur*</p>
             <div className="input-item">
@@ -74,8 +80,6 @@ const Contact = props => {
                 value={email}
                 onChange={event => {
                   setEmail(event.target.value);
-
-                  setNow(100);
                 }}
               />
               <img
@@ -86,18 +90,23 @@ const Contact = props => {
             </div>
           </div>
 
+          {/* Checkbox */}
+
           <div className="checkbox">
             <input
               type="checkbox"
               name="checkbox"
               onChange={() => {
                 setAgree(true);
+                setNow(100);
               }}
             />
             <p>
               J'accepte de recevoir par email des propositions de MeileurTaux.
             </p>
           </div>
+
+          {/* FOOTER */}
 
           <div className="bottom-element">
             <li
@@ -108,7 +117,24 @@ const Contact = props => {
               Précédent
             </li>
 
-            <ProgressBar now={now} label={`${now}%`} />
+            {/* Progress Bar */}
+
+            <div className="df number-bar">
+              <div className="bar" />
+              <div style={{ position: "absolute" }}>
+                <ProgressBar
+                  style={
+                    now === 85
+                      ? { marginLeft: "425px" }
+                      : { marginLeft: "500px" }
+                  }
+                  now={now}
+                  label={`${now}%`}
+                />
+              </div>
+            </div>
+
+            {/* Button validated from */}
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}
@@ -118,8 +144,6 @@ const Contact = props => {
             </button>
           </div>
         </form>
-
-        {/* FOOTER */}
 
         <Footer />
       </article>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Footer from "../../components/Footer/index";
 import ProgressBar from "react-bootstrap/ProgressBar";
@@ -10,38 +9,25 @@ const Where = props => {
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
 
+  // State of progress bar
   const [now, setNow] = useState(60);
   const history = useHistory();
 
-  // const { cities } = useParams();
-
-  // const [isLoading, setIsLoading] = useState(true);
-
+  // State that stores the user's choice
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
 
+  // Constant which will validate the form
   let isEnabled = false;
 
   if (country !== "" && city !== "") {
     isEnabled = true;
   }
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.get(
-  //       "https://vicopo.selfbuild.fr/search/" + cities
-  //     );
-
-  //     setCity(response.data);
-  //     setIsLoading(false);
-  //   };
-  //   fetchData();
-  // }, []);
-
   return (
     <section>
       <article className="container">
-        {/* TITLE */}
+        {/* HEADER */}
 
         <h1>OÙ SE SITUE LE BIEN À FINANCER?</h1>
 
@@ -60,6 +46,8 @@ const Where = props => {
             }
           }}
         >
+          {/* Input Country */}
+
           <div className="input-element grey">
             <p className="description">
               Dans quel pays se situe votre projet?*
@@ -81,6 +69,8 @@ const Where = props => {
               />
             </div>
           </div>
+
+          {/* Input City */}
 
           <div className="input-element">
             <p className="description">Ville ou code postal*</p>
@@ -112,6 +102,8 @@ const Where = props => {
             une commune ciblée.
           </p>
 
+          {/* FOOTER */}
+
           <div className="bottom-element">
             <li
               onClick={() => {
@@ -121,7 +113,24 @@ const Where = props => {
               Précédent
             </li>
 
-            <ProgressBar now={now} label={`${now}%`} />
+            {/* Progress Bar */}
+
+            <div className="df number-bar">
+              <div className="bar" />
+              <div style={{ position: "absolute" }}>
+                <ProgressBar
+                  style={
+                    now === 60
+                      ? { marginLeft: "330px" }
+                      : { marginLeft: "350px" }
+                  }
+                  now={now}
+                  label={`${now}%`}
+                />
+              </div>
+            </div>
+
+            {/* Button validated from */}
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}
@@ -131,8 +140,6 @@ const Where = props => {
             </button>
           </div>
         </form>
-
-        {/* FOOTER */}
 
         <Footer />
       </article>

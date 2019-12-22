@@ -9,7 +9,9 @@ const Current = props => {
   const { setIsSelected } = props;
   const newIsSelected = [...isSelected];
 
+  // State of progress bar
   const [now, setNow] = useState(45);
+
   const history = useHistory();
 
   const tenant = "Locataire";
@@ -17,8 +19,10 @@ const Current = props => {
   const staffHouse = "Bénéficiaire d'un logement de fonction";
   const freeHosted = "Hébergé à titre gratuit";
 
+  // State that stores the user's choice
   const [current, setCurrent] = useState("");
 
+  // Constant which will validate the form
   let isEnabled = false;
 
   if (
@@ -57,6 +61,8 @@ const Current = props => {
           }}
         >
           <div className="items">
+            {/* Button Tenant */}
+
             <button
               className={current === tenant ? "button-on" : "button-off"}
               type="button"
@@ -68,6 +74,8 @@ const Current = props => {
             >
               Locataire
             </button>
+
+            {/* Button Owner */}
 
             <button
               className={current === owner ? "button-on" : "button-off"}
@@ -81,6 +89,8 @@ const Current = props => {
               Propriétaire
             </button>
 
+            {/* Button Staff House */}
+
             <button
               className={current === staffHouse ? "button-on" : "button-off"}
               type="button"
@@ -92,6 +102,8 @@ const Current = props => {
             >
               Bénéficiaire d'un logement de fonction
             </button>
+
+            {/* Button Free Hosted */}
 
             <button
               className={current === freeHosted ? "button-on" : "button-off"}
@@ -106,6 +118,8 @@ const Current = props => {
             </button>
           </div>
 
+          {/* FOOTER */}
+
           <div className="bottom-element">
             <li
               onClick={() => {
@@ -115,7 +129,24 @@ const Current = props => {
               Précédent
             </li>
 
-            <ProgressBar now={now} label={`${now}%`} />
+            {/* Progress Bar */}
+
+            <div className="df number-bar">
+              <div className="bar" />
+              <div style={{ position: "absolute" }}>
+                <ProgressBar
+                  style={
+                    now === 45
+                      ? { marginLeft: "225px" }
+                      : { marginLeft: "300px" }
+                  }
+                  now={now}
+                  label={`${now}%`}
+                />
+              </div>
+            </div>
+
+            {/* Button validated from */}
 
             <button
               className={isEnabled ? "next" : "nextDisabled"}
@@ -125,8 +156,6 @@ const Current = props => {
             </button>
           </div>
         </form>
-
-        {/* FOOTER */}
 
         <Footer />
       </article>

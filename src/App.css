@@ -38,6 +38,10 @@ li {
   display: flex;
 }
 
+.td-u {
+  text-decoration: underline;
+}
+
 .mt-20 {
   margin-top: 20px;
 }
@@ -73,6 +77,11 @@ h1 {
   width: 25px;
   display: flex;
   justify-content: center;
+}
+
+.euro {
+  margin-left: 20px;
+  font-size: 25px;
 }
 
 .items {
@@ -208,4 +217,27 @@ h1 {
 .input-item {
   display: flex;
   flex: 4;
+}
+
+.progress {
+  width: 40px;
+  height: 40px;
+  background-color: #ff9e23;
+  border: 4px solid #ffdfb1;
+  color: #fff;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bar {
+  position: relative;
+  width: 500px;
+  height: 5px;
+  background-color: #f0f0f0;
+}
+
+.number-bar {
+  align-items: center;
 }
