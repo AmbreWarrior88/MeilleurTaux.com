@@ -28,7 +28,7 @@ const Finished = props => {
     setIsSelected(newIsSelected);
     const fetchData = async () => {
       const response = await axios.post(
-        "mongodb://heroku_tqjc1lv2:464n7fl542psqnmmc77rmn2d9q@ds257668.mlab.com:57668/heroku_tqjc1lv2/add-quote",
+        "https://meilleurtaux-backend.herokuapp.com//add-quote",
         {
           isSelected: isSelected
         }
