@@ -27,9 +27,12 @@ const Finished = props => {
     newIsSelected.push(file);
     setIsSelected(newIsSelected);
     const fetchData = async () => {
-      const response = await axios.post("heroku_tqjc1lv2/add-quote", {
-        isSelected: isSelected
-      });
+      const response = await axios.post(
+        "mongodb://heroku_tqjc1lv2:464n7fl542psqnmmc77rmn2d9q@ds257668.mlab.com:57668/heroku_tqjc1lv2/add-quote",
+        {
+          isSelected: isSelected
+        }
+      );
       console.log("response.data =>", response.data);
 
       setIsSelected(response.data);
